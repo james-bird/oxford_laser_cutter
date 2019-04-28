@@ -4,7 +4,7 @@ Code for generating cutting paths for A Series Oxford Laser micro machining syst
 
 Addresses the need for cutting large items easily using the high cut speeds from the galvos. 
 
-The code takes a .dfx file and breaks it up into overlapping squares which are then moved to with the bed, and then cut with the galvos. outputs a .pgm program file to achieve this.
+The code takes a .dfx file and breaks it up into overlapping squares which are then moved to with the bed, and then cut with the galvos. Outputs a .pgm program file to achieve this.
 
 To run: Set cutting and file parameters in dxf2lincut.m, and then run the script. Plots of cut-paths are produced to aid any debugging. Additionally, a scaling variable has been added so cutting paths can be massively reduced in size for rapid testing.
 
