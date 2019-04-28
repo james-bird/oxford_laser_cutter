@@ -1,0 +1,99 @@
+DVAR $DISTZ
+;
+; G-code to cut out lattice structure
+;
+;**************************************
+G90 ; use absolute coordinate system
+G71 ; units in mm
+BEAMOFF ; Ensure that the beam is off
+G92 X0 Y0 Z0 ;Create new absolute datum
+$DISTZ=0 
+FARCALL "ATTENUATOR.PGM" s100 ; 100power
+G16 GX GY Z 
+F400 
+DWELL 0.100000
+G1 X13.000000 Y13.000000 F40 
+DWELL 0.100000
+F400 
+BEAMOFF ; Ensure that the beam is off
+G1 GX -12.000000 GY -12.000000 
+BEAMON ; turn beam on
+REPEAT 50
+G1 GX -12.000000 GY 13.050000 
+G1 GX -12.000000 GY -12.000000 
+ENDREPEAT
+BEAMOFF ; Ensure that the beam is off
+BEAMOFF ; Ensure that the beam is off
+G1 GX -12.000000 GY -12.000000 
+BEAMON ; turn beam on
+REPEAT 50
+G1 GX 13.050000 GY -12.000000 
+G1 GX -12.000000 GY -12.000000 
+ENDREPEAT
+BEAMOFF ; Ensure that the beam is off
+DWELL 0.100000
+G1 X13.000000 Y39.000000 F40 
+DWELL 0.100000
+F400 
+BEAMOFF ; Ensure that the beam is off
+G1 GX -12.000000 GY -13.050000 
+BEAMON ; turn beam on
+REPEAT 50
+G1 GX -12.000000 GY 12.000000 
+G1 GX -12.000000 GY -13.050000 
+ENDREPEAT
+BEAMOFF ; Ensure that the beam is off
+BEAMOFF ; Ensure that the beam is off
+G1 GX -12.000000 GY 12.000000 
+BEAMON ; turn beam on
+REPEAT 50
+G1 GX 13.050000 GY 12.000000 
+G1 GX -12.000000 GY 12.000000 
+ENDREPEAT
+BEAMOFF ; Ensure that the beam is off
+DWELL 0.100000
+G1 X39.000000 Y13.000000 F40 
+DWELL 0.100000
+F400 
+BEAMOFF ; Ensure that the beam is off
+G1 GX -13.050000 GY -12.000000 
+BEAMON ; turn beam on
+REPEAT 50
+G1 GX 12.000000 GY -12.000000 
+G1 GX -13.050000 GY -12.000000 
+ENDREPEAT
+BEAMOFF ; Ensure that the beam is off
+BEAMOFF ; Ensure that the beam is off
+G1 GX 12.000000 GY -12.000000 
+BEAMON ; turn beam on
+REPEAT 50
+G1 GX 12.000000 GY 13.050000 
+G1 GX 12.000000 GY -12.000000 
+ENDREPEAT
+BEAMOFF ; Ensure that the beam is off
+DWELL 0.100000
+G1 X39.000000 Y39.000000 F40 
+DWELL 0.100000
+F400 
+BEAMOFF ; Ensure that the beam is off
+G1 GX 12.000000 GY -13.050000 
+BEAMON ; turn beam on
+REPEAT 50
+G1 GX 12.000000 GY 12.000000 
+G1 GX 12.000000 GY -13.050000 
+ENDREPEAT
+BEAMOFF ; Ensure that the beam is off
+BEAMOFF ; Ensure that the beam is off
+G1 GX -13.050000 GY 12.000000 
+BEAMON ; turn beam on
+REPEAT 50
+G1 GX 12.000000 GY 12.000000 
+G1 GX -13.050000 GY 12.000000 
+ENDREPEAT
+BEAMOFF ; Ensure that the beam is off
+DWELL 0.100000
+G1 X0.000000 Y0.000000 F40 
+DWELL 0.100000
+F400 
+G1 GX 0.000000 GY 0.000000 
+M2 ; End the program
